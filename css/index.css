@@ -1,0 +1,862 @@
+/* ========================================
+   ЗАГАЛЬНІ СТИЛІ
+   ======================================== */
+
+/* Скидання стилів та базові налаштування */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Основні стилі для body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Контейнер для контенту */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ========================================
+   ШАПКА САЙТУ
+   ======================================== */
+
+.site-header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Анімований фон для шапки */
+.site-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.main-title {
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    position: relative;
+    z-index: 1;
+    animation: fadeInDown 1s ease;
+}
+
+.tagline {
+    font-size: 1.2em;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 1s ease 0.3s both;
+}
+
+/* ========================================
+   НАВІГАЦІЯ
+   ======================================== */
+
+.main-nav {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 3px solid #ffd700;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.nav-link {
+    display: block;
+    padding: 15px 25px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ефект підкреслення для навігації */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #ffd700, #ffed4b);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #1e3c72;
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.nav-link:hover::after {
+    transform: translateX(0);
+}
+
+.nav-link.active {
+    background: linear-gradient(135deg, #ffd700, #ffed4b);
+    color: #1e3c72;
+    font-weight: bold;
+}
+
+/* ========================================
+   ОСНОВНИЙ КОНТЕНТ
+   ======================================== */
+
+.main-content {
+    background: white;
+    margin: 30px auto;
+    padding: 40px;
+    max-width: 1200px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease;
+}
+
+/* ========================================
+   ГЕРОЙ СЕКЦІЯ (з фото)
+   ======================================== */
+
+.hero-section {
+    display: flex;
+    gap: 40px;
+    align-items: start;
+    margin-bottom: 40px;
+}
+
+.champion-photo {
+    flex: 0 0 400px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.champion-photo:hover {
+    transform: scale(1.02);
+}
+
+.champion-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.champion-photo figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: white;
+    padding: 20px;
+    font-style: italic;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.champion-photo:hover figcaption {
+    transform: translateY(0);
+}
+
+.bio-content {
+    flex: 1;
+}
+
+/* ========================================
+   ТАБЛИЦЯ
+   ======================================== */
+
+.timeline-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.timeline-table caption {
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    color: #1e3c72;
+    font-weight: bold;
+}
+
+.timeline-table thead {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+}
+
+.timeline-table th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.timeline-table tbody tr {
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.timeline-table tbody tr:hover {
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.1), rgba(255, 237, 75, 0.1));
+    transform: translateX(5px);
+}
+
+.timeline-table td {
+    padding: 12px 15px;
+}
+
+/* ========================================
+   ДОСЯГНЕННЯ
+   ======================================== */
+
+.achievements-grid {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.achievement-column {
+    flex: 1;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.achievement-list {
+    list-style-position: inside;
+    margin-top: 15px;
+}
+
+.achievement-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: padding-left 0.3s ease;
+}
+
+.achievement-list li:hover {
+    padding-left: 10px;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* ========================================
+   ЦИТАТИ
+   ======================================== */
+
+.champion-quote {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 20%, #667eea 100%);
+    background-size: 200% 100%;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    margin: 20px 0;
+    position: relative;
+    font-size: 1.2em;
+    animation: gradientShift 5s ease infinite;
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.champion-quote cite {
+    display: block;
+    text-align: right;
+    margin-top: 15px;
+    font-style: normal;
+    opacity: 0.9;
+}
+
+/* ========================================
+   ФОРМИ - ОСНОВНІ СТИЛІ
+   ======================================== */
+
+.forms-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.form-container {
+    background: linear-gradient(135deg, #f6f8fb 0%, #e9ecef 100%);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.15);
+}
+
+.form-container h2 {
+    color: #1e3c72;
+    margin-bottom: 10px;
+    border-bottom: 3px solid #ffd700;
+    padding-bottom: 10px;
+}
+
+/* Float форма для логіну */
+.float-form {
+    float: right;
+    clear: right;
+    width: 45%;
+    position: relative;
+    margin-left: 20px;
+}
+
+/* ========================================
+   ФОРМИ - ЕЛЕМЕНТИ
+   ======================================== */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.form-group:hover .form-label {
+    color: #1e3c72;
+}
+
+.required {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* Input поля */
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: white;
+}
+
+/* Стани focus */
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Стани hover */
+.form-input:hover,
+.form-select:hover,
+.form-textarea:hover {
+    border-color: #764ba2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Валідація */
+.form-input:valid {
+    border-color: #27ae60;
+    background: linear-gradient(to right, transparent 98%, #27ae60 98%);
+}
+
+.form-input:invalid:not(:placeholder-shown) {
+    border-color: #e74c3c;
+    background: linear-gradient(to right, transparent 98%, #e74c3c 98%);
+    animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Textarea специфічні стилі */
+.form-textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
+}
+
+/* Select стилі */
+.form-select {
+    cursor: pointer;
+    background-image: linear-gradient(45deg, transparent 50%, #333 50%),
+                      linear-gradient(135deg, #333 50%, transparent 50%);
+    background-position: calc(100% - 20px) calc(1em + 2px),
+                         calc(100% - 15px) calc(1em + 2px);
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+}
+
+/* Radio і Checkbox стилі */
+.radio-group,
+.checkbox-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.radio-label,
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.radio-label:hover,
+.checkbox-label:hover {
+    transform: translateX(5px);
+}
+
+.form-radio,
+.form-checkbox {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Кастомний checkbox */
+.form-checkbox {
+    appearance: none;
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.form-checkbox:checked {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-color: #667eea;
+}
+
+.form-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+}
+
+/* File input */
+.form-file {
+    padding: 8px;
+    background: white;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-file:hover {
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.05);
+}
+
+/* Підказки */
+.form-hint {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85em;
+    color: #777;
+    font-style: italic;
+}
+
+/* ========================================
+   КНОПКИ
+   ======================================== */
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ефект хвилі для кнопок */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #ffd700, #ffed4b);
+    color: #1e3c72;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    font-weight: bold;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-3px) rotate(2deg);
+    box-shadow: 0 6px 25px rgba(255, 215, 0, 0.6);
+}
+
+.btn-cancel {
+    background: #e0e0e0;
+    color: #666;
+}
+
+.btn-cancel:hover {
+    background: #ccc;
+}
+
+/* ========================================
+   МОДАЛЬНЕ ВІКНО
+   ======================================== */
+
+.modal-overlay {
+    display: none; /* Приховано за замовчуванням */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    position: relative;
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideInUp 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 35px;
+    color: #999;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 50%;
+}
+
+.modal-close:hover {
+    color: #333;
+    background: rgba(0, 0, 0, 0.1);
+    transform: rotate(90deg);
+}
+
+.modal-trigger-container {
+    grid-column: span 2;
+    text-align: center;
+    padding: 30px;
+}
+
+.modal-trigger {
+    font-size: 18px;
+    padding: 15px 40px;
+}
+
+/* ========================================
+   ДОДАТКОВІ ЕЛЕМЕНТИ
+   ======================================== */
+
+.section-divider {
+    margin: 40px 0;
+    border: none;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ffd700, transparent);
+    border-radius: 2px;
+}
+
+.additional-info {
+    background: linear-gradient(135deg, #f6f8fb, #e9ecef);
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 40px;
+    border-left: 5px solid #ffd700;
+}
+
+.external-links {
+    margin-top: 40px;
+}
+
+.links-list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.links-list a {
+    color: #667eea;
+    text-decoration: none;
+    padding: 8px 15px;
+    border: 2px solid #667eea;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.links-list a:hover {
+    background: #667eea;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Контактна інформація */
+.contact-info {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-info::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    100% { transform: rotate(360deg); }
+}
+
+.contact-info address {
+    font-style: normal;
+    line-height: 2;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-link {
+    display: inline-block;
+    padding: 8px 15px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+}
+
+/* ========================================
+   ФУТЕР
+   ======================================== */
+
+.site-footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 50px;
+}
+
+.site-footer p {
+    margin: 5px 0;
+}
+
+/* ========================================
+   АНІМАЦІЇ
+   ======================================== */
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   МЕДІА ЗАПИТИ
+   ======================================== */
+
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+    }
+    
+    .champion-photo {
+        flex: none;
+        width: 100%;
+    }
+    
+    .achievements-grid {
+        flex-direction: column;
+    }
+    
+    .forms-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .float-form {
+        float: none;
+        width: 100%;
+        margin-left: 0;
+    }
+    
+    .main-title {
+        font-size: 2em;
+    }
+    
+    .nav-list {
+        flex-direction: column;
+    }
+}
