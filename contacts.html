@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакти - Олександр Усик</title>
+    <title>Контакти</title>
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
 
@@ -77,7 +77,7 @@
                         <div class="form-group">
                             <label for="birthdate" class="form-label">Дата народження</label>
                             <input type="date" id="birthdate" name="birthdate" class="form-input" 
-                                   min="1920-01-01" max="2006-12-31">
+                                   min="1920-01-01" required>
                         </div>
                         
                         <!-- Стать -->
@@ -86,15 +86,11 @@
                             <div class="radio-group">
                                 <label class="radio-label">
                                     <input type="radio" name="gender" value="male" class="form-radio">
-                                    <span>Чоловік</span>
+                                    <span>Чоловіча</span>
                                 </label>
                                 <label class="radio-label">
                                     <input type="radio" name="gender" value="female" class="form-radio">
-                                    <span>Жінка</span>
-                                </label>
-                                <label class="radio-label">
-                                    <input type="radio" name="gender" value="other" class="form-radio">
-                                    <span>Інше</span>
+                                    <span>Жіноча</span>
                                 </label>
                             </div>
                         </div>
@@ -116,10 +112,6 @@
                         <!-- Чекбокси -->
                         <div class="form-group">
                             <label class="checkbox-label">
-                                <input type="checkbox" name="newsletter" class="form-checkbox">
-                                <span>Хочу отримувати новини про Усика</span>
-                            </label>
-                            <label class="checkbox-label">
                                 <input type="checkbox" name="terms" class="form-checkbox" required>
                                 <span>Погоджуюсь з <a href="#">умовами використання</a> <span class="required">*</span></span>
                             </label>
@@ -131,7 +123,7 @@
                 </article>
 
                 <!-- Форма входу (плаваюча праворуч) -->
-                <article class="form-container login-form float-form">
+                <article class="form-container float-form">
                     <h2>Вхід для учасників</h2>
                     <p>Увійдіть у свій обліковий запис</p>
                     
@@ -150,28 +142,70 @@
                                    placeholder="Введіть пароль" required>
                         </div>
                         
-                        <!-- Запам'ятати мене -->
-                        <div class="form-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="remember" class="form-checkbox">
-                                <span>Запам'ятати мене</span>
-                            </label>
-                        </div>
-                        
                         <!-- Кнопки -->
                         <button type="submit" class="btn btn-primary">Увійти</button>
-                        <a href="#" class="forgot-password">Забули пароль?</a>
+                        <a href="#">Забули пароль?</a>
                     </form>
                 </article>
 
-                <!-- Кнопка для відкриття модального вікна -->
-                <div class="modal-trigger-container">
-                    <button class="btn btn-secondary modal-trigger" onclick="document.getElementById('feedback-modal').style.display='flex'">
-                        Залишити відгук
-                    </button>
-                    <p><small>Натисніть, щоб відкрити форму зворотного зв'язку</small></p>
-                </div>
+                <!-- Форма зворотнього зв'язку -->
+                <section id="feedback-form" class="form-container">
+                    <h2>Форма зворотного зв'язку</h2>
+                                
+                    <form action="#" method="post" class="contact-form">
+                        <div class="form-group">
+                            <label for="feedback-name" class="form-label">Ваше ім'я <span class="required">*</span></label>
+                            <input type="text" id="feedback-name" name="feedback-name" class="form-input" 
+                                   placeholder="Введіть ваше ім'я" required minlength="3" maxlength="30">
+                        </div>
 
+                        <div class="form-group">
+                            <label for="feedback-email" class="form-label">Email <span class="required">*</span></label>
+                            <input type="email" id="feedback-email" name="feedback-email" class="form-input" 
+                                   placeholder="your@email.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="feedback-phone" class="form-label">Телефон</label>
+                            <input type="tel" id="feedback-phone" name="feedback-phone" class="form-input" 
+                                   placeholder="+380 (XX) XXX-XX-XX" 
+                                   pattern="[\+]?[0-9\s\-\(\)]+">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="feedback-subject" class="form-label">Тема повідомлення</label>
+                            <select id="feedback-subject" name="feedback-subject" class="form-select">
+                                <option value="">Оберіть тему</option>
+                                <option value="general">Загальне питання</option>
+                                <option value="fanclub">Про фан-клуб</option>
+                                <option value="events">Події та зустрічі</option>
+                                <option value="media">Медіа запити</option>
+                                <option value="partnership">Співпраця</option>
+                                <option value="other">Інше</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="feedback-message" class="form-label">Ваше повідомлення <span class="required">*</span></label>
+                            <textarea id="feedback-message" name="feedback-message" class="form-textarea" 
+                                      placeholder="Напишіть ваше повідомлення тут..." 
+                                      rows="5" required minlength="10" maxlength="1000"></textarea>
+                            <small class="form-hint">Максимум 1000 символів</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="gdpr" class="form-checkbox" required>
+                                <span>Я даю згоду на обробку персональних даних <span class="required">*</span></span>
+                            </label>
+                        </div>
+
+                        <div>
+                            <button type="submit" class="btn btn-primary" >Відправити повідомлення</button>
+                        </div>
+                    </form>
+                </section>
+                
             </section>
 
             <!-- Контактна інформація -->
@@ -184,121 +218,21 @@
                     <p>📱 Телефон: +380 (44) 123-45-67</p>
                 </address>
                 
-                <h4>Соціальні мережі</h4>
+                <h4>Соціальні мережі:</h4>
                 <div class="social-links">
-                    <a href="#" class="social-link">Instagram</a>
-                    <a href="#" class="social-link">Facebook</a>
-                    <a href="#" class="social-link">Twitter</a>
-                    <a href="#" class="social-link">YouTube</a>
+                    <a href="https://www.instagram.com/usykaa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-link">Instagram</a>
+                    <a href="https://www.facebook.com/Alexanderusyk/" class="social-link">Facebook</a>
+                    <a href="https://x.com/usykaa?lang=uk" class="social-link">Twitter</a>
                 </div>
             </aside>
 
         </div>
     </main>
 
-    <!-- Модальне вікно з формою зворотного зв'язку (position: fixed) -->
-    <div id="feedback-modal" class="modal-overlay">
-        <div class="modal-content">
-            <span class="modal-close" onclick="document.getElementById('feedback-modal').style.display='none'">&times;</span>
-            
-            <h2>Форма зворотного зв'язку</h2>
-            <p>Напишіть нам ваше повідомлення</p>
-            
-            <form action="#" method="post" class="contact-form">
-                <!-- Ім'я -->
-                <div class="form-group">
-                    <label for="feedback-name" class="form-label">Ваше ім'я <span class="required">*</span></label>
-                    <input type="text" id="feedback-name" name="feedback-name" class="form-input" 
-                           placeholder="Як вас звати?" required>
-                </div>
-                
-                <!-- Email -->
-                <div class="form-group">
-                    <label for="feedback-email" class="form-label">Email <span class="required">*</span></label>
-                    <input type="email" id="feedback-email" name="feedback-email" class="form-input" 
-                           placeholder="your@email.com" required>
-                </div>
-                
-                <!-- Телефон -->
-                <div class="form-group">
-                    <label for="feedback-phone" class="form-label">Телефон</label>
-                    <input type="tel" id="feedback-phone" name="feedback-phone" class="form-input" 
-                           placeholder="+380 (XX) XXX-XX-XX" 
-                           pattern="[\+]?[0-9\s\-\(\)]+">
-                </div>
-                
-                <!-- Тема повідомлення -->
-                <div class="form-group">
-                    <label for="feedback-subject" class="form-label">Тема повідомлення</label>
-                    <select id="feedback-subject" name="feedback-subject" class="form-select">
-                        <option value="">Оберіть тему</option>
-                        <option value="general">Загальне питання</option>
-                        <option value="fanclub">Про фан-клуб</option>
-                        <option value="events">Події та зустрічі</option>
-                        <option value="media">Медіа запити</option>
-                        <option value="partnership">Співпраця</option>
-                        <option value="other">Інше</option>
-                    </select>
-                </div>
-                
-                <!-- Повідомлення -->
-                <div class="form-group">
-                    <label for="feedback-message" class="form-label">Ваше повідомлення <span class="required">*</span></label>
-                    <textarea id="feedback-message" name="feedback-message" class="form-textarea" 
-                              placeholder="Напишіть ваше повідомлення тут..." 
-                              rows="5" required minlength="10" maxlength="1000"></textarea>
-                    <small class="form-hint">Максимум 1000 символів</small>
-                </div>
-                
-                <!-- Пріоритет -->
-                <div class="form-group">
-                    <label class="form-label">Пріоритет повідомлення</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="priority" value="low" class="form-radio">
-                            <span>Низький</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="priority" value="medium" class="form-radio" checked>
-                            <span>Середній</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="priority" value="high" class="form-radio">
-                            <span>Високий</span>
-                        </label>
-                    </div>
-                </div>
-                
-                <!-- Файл -->
-                <div class="form-group">
-                    <label for="feedback-file" class="form-label">Прикріпити файл</label>
-                    <input type="file" id="feedback-file" name="feedback-file" class="form-file" 
-                           accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
-                    <small class="form-hint">Формати: JPG, PNG, PDF, DOC. Макс. розмір: 5MB</small>
-                </div>
-                
-                <!-- Згода на обробку даних -->
-                <div class="form-group">
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="gdpr" class="form-checkbox" required>
-                        <span>Я даю згоду на обробку персональних даних <span class="required">*</span></span>
-                    </label>
-                </div>
-                
-                <!-- Кнопки -->
-                <div class="form-buttons">
-                    <button type="submit" class="btn btn-primary">Відправити повідомлення</button>
-                    <button type="button" class="btn btn-cancel" onclick="document.getElementById('feedback-modal').style.display='none'">Скасувати</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
     <!-- Футер сайту -->
     <footer class="site-footer">
         <div class="container">
-            <p>&copy; 2024 Сайт про Олександра Усика. Створено з любов'ю до українського боксу.</p>
-            <p><small>Всі права захищені. Використання матеріалів дозволяється з посиланням на джерело.</small></p>
+            <p>&copy; 2025 Сайт про Олександра Усика. Створено з любов'ю.</p>
         </div>
     </footer>
 </body>

@@ -9,12 +9,12 @@
     box-sizing: border-box;
 }
 
-/* Основні стилі для body */
+/* Основні стилі */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-color: #e6f0ff; /* світло-блакитний */
     background-attachment: fixed;
     min-height: 100vh;
 }
@@ -24,6 +24,14 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+.container hr {
+    margin: 40px 0;
+    border: none;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ffd700, transparent);
+    border-radius: 2px;
 }
 
 /* ========================================
@@ -141,6 +149,14 @@ body {
     font-weight: bold;
 }
 
+section[id="biography"],
+section[id="gallery"],
+section[id="achievements"],
+section[id="quotes"],
+section[id="contact-form"] {
+    scroll-margin-top: 60px;
+}
+
 /* ========================================
    ОСНОВНИЙ КОНТЕНТ
    ======================================== */
@@ -159,7 +175,7 @@ body {
    ГЕРОЙ СЕКЦІЯ (з фото)
    ======================================== */
 
-.hero-section {
+.boxer-section {
     display: flex;
     gap: 40px;
     align-items: start;
@@ -202,8 +218,54 @@ body {
     transform: translateY(0);
 }
 
+.bio-content2,
 .bio-content {
     flex: 1;
+}
+
+.bio-content2 {
+    text-align:justify;
+}
+
+.float-image {
+    float: right;
+    width: 300px;
+    margin: 0 0 20px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.gallery {
+    height: 300px;
+    width: 450px;
+    position: relative;
+    margin: 0 auto 250px auto;
+}
+
+.gallery h2 {margin: 0 0 0 0;}
+
+.img-on-img {
+    border-radius: 15px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}  
+
+.img1 {
+    top: 15px;
+    right: 225px;
+    z-index: 1;
+}
+.img2 {
+    top: 15px;
+    left: 225px;
+    z-index: 2;
+}
+.img3 {
+    top: 225px;
+    left: 0px;
+    z-index: 3;
 }
 
 /* ========================================
@@ -293,7 +355,7 @@ body {
    ======================================== */
 
 .champion-quote {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 20%, #667eea 100%);
+    background: linear-gradient(135deg, #1d2d5f 0%, #324b8c 100%);
     background-size: 200% 100%;
     color: white;
     padding: 30px;
@@ -303,12 +365,6 @@ body {
     font-size: 1.2em;
     animation: gradientShift 5s ease infinite;
     box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
-}
-
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
 }
 
 .champion-quote cite {
@@ -335,12 +391,6 @@ body {
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.form-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.15);
 }
 
 .form-container h2 {
@@ -354,7 +404,7 @@ body {
 .float-form {
     float: right;
     clear: right;
-    width: 45%;
+    width: 100%;
     position: relative;
     margin-left: 20px;
 }
@@ -424,13 +474,6 @@ body {
 .form-input:invalid:not(:placeholder-shown) {
     border-color: #e74c3c;
     background: linear-gradient(to right, transparent 98%, #e74c3c 98%);
-    animation: shake 0.3s ease;
-}
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
 }
 
 /* Textarea специфічні стилі */
@@ -467,11 +510,6 @@ body {
     transition: transform 0.2s ease;
 }
 
-.radio-label:hover,
-.checkbox-label:hover {
-    transform: translateX(5px);
-}
-
 .form-radio,
 .form-checkbox {
     margin-right: 8px;
@@ -505,21 +543,6 @@ body {
     font-weight: bold;
 }
 
-/* File input */
-.form-file {
-    padding: 8px;
-    background: white;
-    border: 2px dashed #ddd;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.form-file:hover {
-    border-color: #667eea;
-    background: rgba(102, 126, 234, 0.05);
-}
-
 /* Підказки */
 .form-hint {
     display: block;
@@ -546,6 +569,10 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Ефект хвилі для кнопок */
@@ -563,144 +590,32 @@ body {
 }
 
 .btn:hover::before {
-    width: 300px;
-    height: 300px;
+    width: 330px;
+    height: 320px;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #1d2d5f 0%, #324b8c 100%);
     color: white;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+    box-shadow: 0 4px 15px rgba(29, 45, 95, 0.4);
 }
 
 .btn-primary:active {
     transform: translateY(-1px);
-    box-shadow: 0 3px 10px rgba(102, 126, 234, 0.4);
-}
-
-.btn-secondary {
-    background: linear-gradient(135deg, #ffd700, #ffed4b);
-    color: #1e3c72;
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
-    font-weight: bold;
-}
-
-.btn-secondary:hover {
-    transform: translateY(-3px) rotate(2deg);
-    box-shadow: 0 6px 25px rgba(255, 215, 0, 0.6);
-}
-
-.btn-cancel {
-    background: #e0e0e0;
-    color: #666;
-}
-
-.btn-cancel:hover {
-    background: #ccc;
-}
-
-/* ========================================
-   МОДАЛЬНЕ ВІКНО
-   ======================================== */
-
-.modal-overlay {
-    display: none; /* Приховано за замовчуванням */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(5px);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-    animation: fadeIn 0.3s ease;
-}
-
-.modal-content {
-    position: relative;
-    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-    padding: 40px;
-    border-radius: 20px;
-    max-width: 600px;
-    width: 90%;
-    max-height: 90vh;
-    overflow-y: auto;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    animation: slideInUp 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-@keyframes slideInUp {
-    from {
-        transform: translateY(100px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.modal-close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 35px;
-    color: #999;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 35px;
-    height: 35px;
-    text-align: center;
-    line-height: 30px;
-    border-radius: 50%;
-}
-
-.modal-close:hover {
-    color: #333;
-    background: rgba(0, 0, 0, 0.1);
-    transform: rotate(90deg);
-}
-
-.modal-trigger-container {
-    grid-column: span 2;
-    text-align: center;
-    padding: 30px;
-}
-
-.modal-trigger {
-    font-size: 18px;
-    padding: 15px 40px;
+    box-shadow: 0 3px 10px rgba(29, 45, 95, 0.4);
 }
 
 /* ========================================
    ДОДАТКОВІ ЕЛЕМЕНТИ
    ======================================== */
 
-.section-divider {
-    margin: 40px 0;
-    border: none;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #ffd700, transparent);
-    border-radius: 2px;
-}
-
 .additional-info {
     background: linear-gradient(135deg, #f6f8fb, #e9ecef);
     padding: 30px;
     border-radius: 10px;
     margin-top: 40px;
+    margin-bottom: 40px;
     border-left: 5px solid #ffd700;
-}
-
-.external-links {
-    margin-top: 40px;
 }
 
 .links-list {
@@ -708,6 +623,7 @@ body {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    margin-top: 15px
 }
 
 .links-list a {
@@ -717,6 +633,7 @@ body {
     border: 2px solid #667eea;
     border-radius: 20px;
     transition: all 0.3s ease;
+  
 }
 
 .links-list a:hover {
@@ -734,21 +651,6 @@ body {
     margin-top: 40px;
     position: relative;
     overflow: hidden;
-}
-
-.contact-info::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
-    animation: rotate 10s linear infinite;
-}
-
-@keyframes rotate {
-    100% { transform: rotate(360deg); }
 }
 
 .contact-info address {
@@ -824,12 +726,19 @@ body {
     }
 }
 
+/* Champ quote */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 /* ========================================
    МЕДІА ЗАПИТИ
    ======================================== */
 
 @media (max-width: 768px) {
-    .hero-section {
+    .boxer-section {
         flex-direction: column;
     }
     
